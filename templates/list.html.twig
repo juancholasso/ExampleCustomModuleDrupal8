@@ -1,0 +1,15 @@
+
+<div class="loremipsum">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+        </tr>
+        {% for item in list %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

@@ -1,0 +1,52 @@
+<?php
+
+function module_juan_schema_otherdb() {
+    $schema['module_juan_name'] = [
+        'description' => 'Stores some entries for our tabledrag fun.',
+        'fields' => [
+        'id' => [
+            'description' => 'The primary identifier for each item',
+            'type' => 'serial',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+        ],
+        'name' => [
+            'description' => 'A name for this item',
+            'type' => 'varchar',
+            'length' => 5,
+            'not null' => TRUE,
+            'unique' => TRUE,
+            'default' => '',
+        ],
+        ],
+        'primary key' => ['id'],
+    ];
+    return $schema;
+}
+
+ 
+function module_juan_install() {
+    \Drupal\Core\Database\Database::setActiveConnection('otherdb');
+
+    $connection = \Drupal\Core\Database\Database::getConnection();
+
+    $schema = module_juan_schema_otherdb();
+    foreach ($schema as $name => $table) {
+        $connection->schema()->createTable($name, $table);
+    }
+
+    \Drupal\Core\Database\Database::setActiveConnection();
+}
+
+function module_juan_uninstall() {
+    \Drupal\Core\Database\Database::setActiveConnection('otherdb');
+
+    $connection = \Drupal\Core\Database\Database::getConnection();
+
+    $schema = module_juan_schema_otherdb();
+    foreach ($schema as $name => $table) {
+        $connection->schema()->dropTable($name);
+    }
+
+    \Drupal\Core\Database\Database::setActiveConnection();
+}

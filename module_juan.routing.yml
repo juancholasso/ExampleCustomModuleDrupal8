@@ -1,0 +1,31 @@
+module_juan.content:
+  path: 'admin/juan/list'
+  defaults:
+    _controller: '\Drupal\module_juan\Controller\MainController::content'
+    _title: 'Main Controller'
+  requirements:
+    _permission: 'access content'
+
+module_juan.download:
+  path: 'admin/juan/download'
+  defaults:
+    _controller: '\Drupal\module_juan\Controller\MainController::downloadCSV'
+    _title: 'Main Controller'
+  requirements:
+    _permission: 'access content'
+
+module_juan.register:
+  path: 'admin/juan/register'
+  defaults:
+    _title: 'Main Controller'
+    _form: '\Drupal\module_juan\Form\RegisterForm'
+  requirements:
+    _permission: 'access content'
+
+module_juan.upload:
+  path: 'admin/juan/upload'
+  defaults:
+    _title: 'Main Controller'
+    _form: '\Drupal\module_juan\Form\UploadForm'
+  requirements:
+    _permission: 'access content'

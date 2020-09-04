@@ -1,0 +1,20 @@
+module_juan.list:
+  title: 'Module Juan settings'
+  description: 'List of names'
+  parent: system.admin_config_development
+  route_name: module_juan.content
+  weight: 100
+
+module_juan.download:
+  title: 'Module Juan settings'
+  description: 'Download names on CSV file'
+  parent: system.admin_config_development
+  route_name: module_juan.download
+  weight: 100
+
+module_juan.create:
+  title: 'Module Juan settings'
+  description: 'Create new names'
+  parent: system.admin_config_development
+  route_name: module_juan.register
+  weight: 100

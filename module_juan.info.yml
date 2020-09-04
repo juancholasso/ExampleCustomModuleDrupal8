@@ -1,0 +1,8 @@
+name: Module Juan
+description: Creates a form for create users
+package: Custom
+type: module
+version: 1.0
+core: 8.x
+dependencies:
+    - block
