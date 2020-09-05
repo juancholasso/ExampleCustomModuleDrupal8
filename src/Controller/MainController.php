@@ -36,13 +36,23 @@ class MainController extends ControllerBase implements ContainerInjectionInterfa
     );
   }
 
+  public function logs() {
+
+    $list = $this->query("select * from module_juan_log");
+    return array(
+      '#theme' => 'logs',
+      '#template' => 'logs',
+      '#list' => $list
+    );
+  }
+
 
   public function downloadCSV(){
     $list = $this->query("select * from module_juan_name");
   
     $output = fopen('php://output', 'w');
 
-    fputcsv($output, array(t('ID'), t('Nombire')));
+    fputcsv($output, array(t('ID'), t('Nombre')));
 
     foreach($list as $item){
       fputcsv($output, [$item->id, $item->name]);

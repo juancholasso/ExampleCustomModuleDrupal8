@@ -29,3 +29,11 @@ module_juan.upload:
     _form: '\Drupal\module_juan\Form\UploadForm'
   requirements:
     _permission: 'access content'
+
+module_juan.logs:
+  path: 'admin/juan/logs'
+  defaults:
+    _controller: '\Drupal\module_juan\Controller\MainController::logs'
+    _title: 'Main Controller'
+  requirements:
+    _permission: 'access content'

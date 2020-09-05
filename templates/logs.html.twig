@@ -1,0 +1,19 @@
+
+<div class="loremipsum">
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Fecha</th>
+            <th>IP</th>
+            <th>Tipo</th>
+        </tr>
+        {% for item in list %}
+        <tr>
+            <td>{{item.id}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.ip}}</td>
+            <td>{{item.type_log}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>

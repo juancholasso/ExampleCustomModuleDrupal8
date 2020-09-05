@@ -7,5 +7,10 @@ function module_juan_theme($existing, $type, $theme, $path) {
         'list' => NULL
       ],
     ],
+    'logs' => [
+      'variables' => [
+        'list' => NULL
+      ],
+    ],
   ];
 }

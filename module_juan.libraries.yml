@@ -1,6 +1,24 @@
 module_juan-libraries:
   version: 1.x
+  css:
+    layout:
+      css/bootstrap-grid.css: {}
+      css/bootstrap-grid.min.css: {}
+      css/bootstrap-grid.min.css.map: {}
+      css/bootstrap-grid.min.css: {}
+      css/bootstrap-reboot.css: {}
+      css/bootstrap-reboot.css.map: {}
+      css/bootstrap.css: {}
+      css/bootstrap.min.css: {}
+      css/bootstrap.min.css.map: {}
   js:
     js/jquery.validate.min.js: {}
     js/additional-methods.min.js: {}
     js/validate-form.js: {}
+    js/bootstrap.bundle.js: {}
+    js/bootstrap.bundle.js.map: {}
+    js/bootstrap.js: {}
+    js/bootstrap.js.map: {}
+    js/bootstrap.min.js: {}
+    js/bootstrap.min.js.map: {}
+

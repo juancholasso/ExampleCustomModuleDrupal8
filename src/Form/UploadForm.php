@@ -2,10 +2,12 @@
 
 namespace Drupal\module_juan\Form;
 
+use Drupal\Core\Entity\Query\QueryFactory;
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\HtmlCommand;
+use Drupal\file\Entity\File;
 
 class UploadForm extends ConfigFormBase {
 
@@ -35,14 +37,22 @@ class UploadForm extends ConfigFormBase {
         return $form;
     }
 
-    // public function submitForm(array &$form, FormStateInterface $form_state) {
-    //     $file = \Drupal::entityTypeManager()->getStorage('file')
-    //     ->load($form_state->getValue('my_file')[0]); // Just FYI. The file id will be stored as an array
-    //     // And you can access every field you need via standard method
-    //     dpm($file->get('filename')->value);
-    //     print_r($file);
-    //     exit();
-    // }
+    public function submitForm(array &$form, FormStateInterface $form_state) {
+        $errors = "";
+        $file = $this->getRequest()->files->get('files', [])['file'];
+        if (($gestor = fopen($file, "r")) !== FALSE) {
+            while (($datos = fgetcsv($gestor, 1000, ",")) !== FALSE) {
+                if($this->query("SELECT * FROM module_juan_name WHERE name = '".$datos[0]."'") == null){
+                    $errors = $errors.$datos[0].", ";
+                }else{
+                    $resQuery = $this->insert(array('name' => $datos[0]), "module_juan_name");
+                }
+                $fila++;
+            }
+            fclose($gestor);
+        }
+        $this->messenger()->addError($this->t('Los siguientes nombres no fueron registrados: @errors', ['@errors' => $errors]));
+    }
 
     public function insert(array $array, $dbName){
         $conn =  \Drupal\Core\Database\Database::getConnection() ;

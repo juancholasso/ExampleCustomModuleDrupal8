@@ -42,7 +42,8 @@ class RegisterForm extends ConfigFormBase {
 
         $form['message'] = [
             '#type' => 'markup',
-            '#markup' => '<div class="result_message"></div>'
+            '#markup' => '</div><div class="alert alert-success result_message" role="alert">
+          </div>'
         ];
 
         return $form;
@@ -69,6 +70,14 @@ class RegisterForm extends ConfigFormBase {
                     '.result_message',
                     '<div class="my_top_message">' . t('El usuario se ha creado con el ID:  @id', ['@id' => ($resQuery)]) . ' Con</div>'),
                 );
+
+                $resQuery = $this->insert(array(
+                    'date' => date('l jS \of F Y h:i:s A'),
+                    'ip' => gethostbyaddr($_SERVER['REMOTE_ADDR']),
+                    'type_log' => "registro",
+
+                ), "module_juan_log");
+
                 return $response;
             }
             else{

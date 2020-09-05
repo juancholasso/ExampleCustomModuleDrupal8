@@ -18,3 +18,10 @@ module_juan.create:
   parent: system.admin_config_development
   route_name: module_juan.register
   weight: 100
+
+module_juan.report:
+  title: 'Module Juan settings'
+  description: 'Logs'
+  parent: system.admin_config_development
+  route_name: module_juan.logs
+  weight: 100

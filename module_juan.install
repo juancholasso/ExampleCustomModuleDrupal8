@@ -2,7 +2,7 @@
 
 function module_juan_schema_otherdb() {
     $schema['module_juan_name'] = [
-        'description' => 'Stores some entries for our tabledrag fun.',
+        'description' => 'Names.',
         'fields' => [
         'id' => [
             'description' => 'The primary identifier for each item',
@@ -14,6 +14,43 @@ function module_juan_schema_otherdb() {
             'description' => 'A name for this item',
             'type' => 'varchar',
             'length' => 5,
+            'not null' => TRUE,
+            'unique' => TRUE,
+            'default' => '',
+        ],
+        ],
+        'primary key' => ['id'],
+    ];
+
+     $schema['module_juan_log'] = [
+        'description' => 'Logs.',
+        'fields' => [
+        'id' => [
+            'description' => 'The primary identifier for each item',
+            'type' => 'serial',
+            'unsigned' => TRUE,
+            'not null' => TRUE,
+        ],
+        'date' => [
+            'description' => 'A name for this item',
+            'type' => 'varchar',
+            'length' => 100,
+            'not null' => TRUE,
+            'unique' => TRUE,
+            'default' => '',
+        ],
+        'ip' => [
+            'description' => 'A name for this item',
+            'type' => 'varchar',
+            'length' => 100,
+            'not null' => TRUE,
+            'unique' => TRUE,
+            'default' => '',
+        ],
+        'type_log' => [
+            'description' => 'A name for this item',
+            'type' => 'varchar',
+            'length' => 20,
             'not null' => TRUE,
             'unique' => TRUE,
             'default' => '',
